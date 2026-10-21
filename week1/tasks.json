@@ -1,0 +1,56 @@
+[
+    {
+        "id": 1,
+        "title": "Setup Development Environment & Git Repository",
+        "description": "Configure Python virtual environment, install dev tools, and initialize git tracking.",
+        "priority": "High",
+        "status": "Completed",
+        "due_date": "2026-10-14",
+        "created_at": "2026-10-18 15:49:56"
+    },
+    {
+        "id": 2,
+        "title": "Design System Architecture & Data Schema",
+        "description": "Draft layered architecture blueprint, component diagrams, and Task data models.",
+        "priority": "High",
+        "status": "Completed",
+        "due_date": "2026-10-16",
+        "created_at": "2026-10-18 15:49:56"
+    },
+    {
+        "id": 3,
+        "title": "Implement JSON Storage Handler & Atomic Writes",
+        "description": "Ensure fault-tolerant file persistence, schema validation, and automatic backup on corruption.",
+        "priority": "High",
+        "status": "In Progress",
+        "due_date": "2026-10-22",
+        "created_at": "2026-10-18 15:49:56"
+    },
+    {
+        "id": 4,
+        "title": "Develop Automated Unit & Integration Tests",
+        "description": "Cover TaskManager business logic, edge-case input handling, and storage persistence.",
+        "priority": "Medium",
+        "status": "In Progress",
+        "due_date": "2026-10-25",
+        "created_at": "2026-10-18 15:49:56"
+    },
+    {
+        "id": 5,
+        "title": "Refactor CLI Presentation & Colored Badges",
+        "description": "Enhance console UI with clean tabular views, color-coded badges, and intuitive menus.",
+        "priority": "Medium",
+        "status": "Pending",
+        "due_date": "2026-10-28",
+        "created_at": "2026-10-18 15:49:56"
+    },
+    {
+        "id": 6,
+        "title": "Compile Final Documentation & Archive ZIP",
+        "description": "Write comprehensive README guide, review evaluation rubric, and bundle project deliverable.",
+        "priority": "Low",
+        "status": "Pending",
+        "due_date": "2026-11-02",
+        "created_at": "2026-10-18 15:49:56"
+    }
+]
