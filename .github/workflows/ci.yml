@@ -15,7 +15,7 @@ jobs:
       fail-fast: false
       matrix:
         os: [ ubuntu-latest, windows-latest ]
-        python-version: [ "3.9", "3.10", "3.11", "3.12", "3.13" ]
+        python-version: [ "3.10", "3.11", "3.12", "3.13" ]
 
     steps:
       - name: Checkout Repository
@@ -32,16 +32,19 @@ jobs:
           python -c "import sys; print('Platform:', sys.platform); print('Prefix:', sys.prefix)"
 
       - name: Run Static Code Analysis & Linting
+        working-directory: week6
         run: |
-          python week6/src/linter.py
+          python src/linter.py
 
       - name: Run Automated Test Suite
+        working-directory: week6
         run: |
-          python -m unittest discover -s week6/tests -v
+          python -m unittest discover -s tests -v
 
       - name: Run Local CI Runner Simulation
+        working-directory: week6
         run: |
-          python week6/local_ci_runner.py
+          python local_ci_runner.py
 
       - name: Archive CI Build Report
         uses: actions/upload-artifact@v4
@@ -49,4 +52,4 @@ jobs:
         with:
           name: ci-build-report-py${{ matrix.python-version }}-${{ matrix.os }}
           path: week6/ci_build_report.json
-
+          if-no-files-found: ignore

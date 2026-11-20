@@ -2,7 +2,16 @@
 Automated Unit and Integration Test Suite for Continuous Integration Verification.
 Verifies business logic, boundary conditions, edge cases, exceptions, and analytics.
 """
+import os
+import sys
 import unittest
+
+# Ensure week6 root is in sys.path regardless of runner working directory
+current_dir = os.path.dirname(os.path.abspath(__file__))
+parent_dir = os.path.abspath(os.path.join(current_dir, ".."))
+if parent_dir not in sys.path:
+    sys.path.insert(0, parent_dir)
+
 from src.models import Customer, Order, OrderItem, OrderStatus, TransactionResult
 from src.core_service import OrderProcessingService
 
