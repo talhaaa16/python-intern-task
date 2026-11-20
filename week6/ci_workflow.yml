@@ -1,0 +1,52 @@
+name: Python Continuous Integration (CI) Pipeline
+
+on:
+  push:
+    branches: [ master, main ]
+  pull_request:
+    branches: [ master, main ]
+  workflow_dispatch:
+
+jobs:
+  ci-pipeline:
+    name: Test & Lint (Python ${{ matrix.python-version }} on ${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ ubuntu-latest, windows-latest ]
+        python-version: [ "3.9", "3.10", "3.11", "3.12", "3.13" ]
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Display Environment Details
+        run: |
+          python --version
+          python -c "import sys; print('Platform:', sys.platform); print('Prefix:', sys.prefix)"
+
+      - name: Run Static Code Analysis & Linting
+        run: |
+          python week6/src/linter.py
+
+      - name: Run Automated Test Suite
+        run: |
+          python -m unittest discover -s week6/tests -v
+
+      - name: Run Local CI Runner Simulation
+        run: |
+          python week6/local_ci_runner.py
+
+      - name: Archive CI Build Report
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: ci-build-report-py${{ matrix.python-version }}-${{ matrix.os }}
+          path: week6/ci_build_report.json
+
